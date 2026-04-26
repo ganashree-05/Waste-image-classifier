@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container">
+
+<h2>Result</h2>
+
+<img src="{{ image_path }}" width="250"><br><br>
+
+{% if label in ["plastic","paper","glass","metal","cardboard"] %}
+<h3 class="recyclable">♻️ {{ label }}</h3>
+{% else %}
+<h3 class="waste">🗑️ {{ label }}</h3>
+{% endif %}
+
+<h4>Confidence: {{ confidence }}%</h4>
+
+<div class="progress">
+<div class="progress-bar" style="width: {{ confidence }}%;"></div>
+</div>
+
+<h4>Details</h4>
+{% set classes = ['cardboard','glass','metal','paper','plastic','trash'] %}
+{% for i in range(classes|length) %}
+<p>{{ classes[i] }}: {{ (probs[i]*100)|round(2) }}%</p>
+{% endfor %}
+
+<br>
+<a href="/"><button>Back</button></a>
+
+</div>
+
+</body>
+</html>

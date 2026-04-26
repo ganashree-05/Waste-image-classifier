@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Dashboard</title>
+
+```
+<style>
+    body {
+        margin: 0;
+        font-family: 'Segoe UI', sans-serif;
+        background: url('/static/dashboard-bg.jpg') no-repeat center/cover;
+        color: white;
+    }
+
+    .container {
+        display: flex;
+    }
+
+    /* SIDEBAR */
+    .sidebar {
+        width: 220px;
+        background: rgba(0,0,0,0.7);
+        height: 100vh;
+        padding: 20px;
+    }
+
+    .sidebar h2 {
+        color: #22c55e;
+    }
+
+    .sidebar a {
+        display: block;
+        margin: 15px 0;
+        color: #cbd5f5;
+        text-decoration: none;
+    }
+
+    .sidebar a:hover {
+        color: #22c55e;
+    }
+
+    /* MAIN */
+    .main {
+        flex: 1;
+        padding: 40px;
+    }
+
+    .card {
+        background: rgba(0,0,0,0.7);
+        padding: 20px;
+        border-radius: 12px;
+        margin-top: 20px;
+        width: 300px;
+    }
+
+    input {
+        width: 100%;
+        padding: 10px;
+        margin-top: 10px;
+    }
+
+    button {
+        margin-top: 10px;
+        padding: 10px;
+        background: #22c55e;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+    }
+
+    .result-grid {
+        display: flex;
+        gap: 20px;
+        margin-top: 20px;
+    }
+
+    .preview {
+        width: 100%;
+        margin-top: 10px;
+        border-radius: 10px;
+    }
+</style>
+```
+
+</head>
+
+<body>
+
+<div class="container">
+
+```
+<div class="sidebar">
+    <h2>♻ Waste AI</h2>
+    <a href="#">Dashboard</a>
+    <a href="#">Upload</a>
+    <a href="#">About</a>
+    <a href="/logout">Logout</a>
+</div>
+
+<div class="main">
+
+    <h1>Smart Waste Classification</h1>
+
+    <div class="card">
+        <input type="file" id="fileInput" onchange="previewImage(event)">
+        <img id="preview" class="preview">
+        <button onclick="predictWaste()">Analyze</button>
+    </div>
+
+    <div class="result-grid">
+
+        <div class="card">
+            <h3>Class</h3>
+            <p id="class">--</p>
+        </div>
+
+        <div class="card">
+            <h3>Confidence</h3>
+            <p id="confidence">--</p>
+        </div>
+
+        <div class="card">
+            <h3>Disposal</h3>
+            <p id="disposal">--</p>
+        </div>
+
+    </div>
+
+</div>
+```
+
+</div>
+
+<script src="/static/script.js"></script>
+
+</body>
+</html>
